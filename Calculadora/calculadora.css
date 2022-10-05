@@ -1,0 +1,126 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 88%}
+    50%{background-position:100% 13%}
+    100%{background-position:0% 88%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 88%}
+    50%{background-position:100% 13%}
+    100%{background-position:0% 88%}
+}
+@keyframes AnimationName { 
+    0%{background-position:0% 88%}
+    50%{background-position:100% 13%}
+    100%{background-position:0% 88%}
+}
+
+
+button {
+  border: 0;
+  border-radius: 10px;
+  background-color: transparent;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  outline: none;
+  appearance: none;
+  text-align: left;
+}
+
+
+
+:root {
+  font-family: 'Nunito Sans';
+}
+
+html {
+  font-size: 200%;
+  line-height: 1.5;
+}
+
+
+body {
+  align-items: center;
+  background: linear-gradient(270deg, #494d4c, #562dbd);
+  background-size: 400% 400%;
+  -webkit-animation: AnimationName 50s ease infinite;
+  -moz-animation: AnimationName 50s ease infinite;
+  animation: AnimationName 50s ease infinite;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+
+ 
+}
+
+.container {
+  max-width: 20em;
+}
+
+.container > p {
+  text-align: center;
+}
+
+.calculadora {
+  border-radius: 12px;
+  box-shadow: 0 0 40px 0px rgba(0, 0, 0, 0.15);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+  max-width: 15em;
+  overflow: hidden;
+}
+
+.calculadora_tela {
+  background-color: #222222;
+  color: #fff;
+  font-size: 1.714285714em;
+  padding: 0.5em 0.75em;
+  text-align: right;
+}
+
+.calculadora_teclas {
+  background-color: rgb(204, 204, 204);
+  display: grid;
+  grid-gap: 1px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.calculadora_teclas > * {
+  background-color: #fff;
+  padding: 0.5em 1.25em;
+  position: relative;
+  text-align: center;
+}
+
+.calculadora_teclas > *:active::before,
+.calculadora_teclas > .is-depressed::before {
+  background-color: rgba(0, 0, 0, 0.2);
+  bottom: 0;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5) inset;
+  content: "";
+  left: 0;
+  opacity: 0.3;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.tecla_operacao {
+  background-color: rgb(135, 133, 133);
+}
+
+.tecla_igual {
+  background-image: linear-gradient(to bottom, #46edbb, #05ba7e);
+  grid-column: -2;
+  grid-row: 2 / span 4;
+}
