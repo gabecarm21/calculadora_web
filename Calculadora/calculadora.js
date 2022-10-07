@@ -4,7 +4,7 @@ let calculadora = (document.querySelector('.calculadora'))
 let tela = document.querySelector('.calculadora_tela')
 let teclas = calculadora.querySelector('.calculadora_teclas')
 let previousKeyType = '0'
-
+let operadorValido = 'false'
 
 teclas.addEventListener('click', e => {
  if (e.target.matches('button')) {
@@ -14,7 +14,7 @@ teclas.addEventListener('click', e => {
     let numeroNaTela = tela.textContent
     let teclaAnterior = calculadora.dataset.previousKeyType
     let botaoLimpar = calculadora.querySelector ('[data-action = limpar]')
-   
+    
     
     Array.from(tecla.parentNode.children)
     .forEach(k => k.classList.remove('is-depressed'))
@@ -39,6 +39,8 @@ teclas.addEventListener('click', e => {
         calculadora.dataset.previousKeyType = 'tecla_operacao'
         calculadora.dataset.firstValue = numeroNaTela
         calculadora.dataset.operator = acao
+        operadorValido = 'true'
+        tela.textContent = '0'
     }
 
     if (acao === 'decimal') {
@@ -64,14 +66,19 @@ teclas.addEventListener('click', e => {
       
     
       if (acao === 'tecla_igual') {
+
+        if (operadorValido === 'true'){
         let primeiroValor = calculadora.dataset.firstValue
         let operador = calculadora.dataset.operator
         let segundoValor = numeroNaTela
         botaoLimpar.textContent = 'AC'
+        operadorValido = 'false'
         let resultado = calculo(primeiroValor,operador,segundoValor)
         calculadora.dataset.previousKeyType = 'tecla_operacao'
         tela.textContent = resultado
-
+        } else {
+          tela.textContent = numeroNaTela
+        }
         }
         
 
